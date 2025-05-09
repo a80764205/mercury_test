@@ -25,5 +25,9 @@ namespace BackendExam.Services
         {
             await _dbContext.UpdateAsync(json);
         }
+        public async Task DeleteData(string json)
+        {
+            await _dbContext.DeleteAsync(json);
+        }
     }
 }
