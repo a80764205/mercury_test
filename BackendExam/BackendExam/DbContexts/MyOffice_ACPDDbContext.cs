@@ -38,5 +38,25 @@ namespace BackendExam.DbContexts
             }
         }
 
+        public async Task<bool> UpdateAsync(string json)
+        {
+            using var transaction = await Database.BeginTransactionAsync();
+            try
+            {
+                SqlParameter param = new SqlParameter(@"JsonString", json);
+
+                await Database.ExecuteSqlRawAsync("EXEC sp_MyOffice_ACPD_Update @json = @JsonString", param);
+
+                await transaction.CommitAsync();
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                await transaction.RollbackAsync();
+                throw ex;
+            }
+        }
+
     }
 }

@@ -32,5 +32,14 @@ namespace BackendExam.Controllers
             await _service.InsertData(json);
             return Ok("Insert Success");
         }
+
+
+        [HttpPost("update")]
+        public async Task<IActionResult> UpdateData([FromBody] List<MyOffice_ACPDModel> model)
+        {
+            var json = JsonSerializer.Serialize(model);
+            await _service.UpdateData(json);
+            return Ok("Update Success");
+        }
     }
 }
