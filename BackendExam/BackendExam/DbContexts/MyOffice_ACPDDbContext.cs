@@ -16,7 +16,7 @@ namespace BackendExam.DbContexts
             using (var cmd = new SqlCommand("sp_MyOffice_ACPD_Select", con))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@JsonString", json);
+                cmd.Parameters.AddWithValue("@json", json);
 
                 await con.OpenAsync();
                 using (var reader = await cmd.ExecuteReaderAsync())
@@ -54,7 +54,7 @@ namespace BackendExam.DbContexts
             using (var cmd = new SqlCommand("sp_MyOffice_ACPD_Update", conn))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@JsonString", json);
+                cmd.Parameters.AddWithValue("@json", json);
 
                 await conn.OpenAsync();
                 using (var transaction = conn.BeginTransaction())
@@ -81,7 +81,7 @@ namespace BackendExam.DbContexts
             using (var cmd = new SqlCommand("sp_MyOffice_ACPD_Insert", conn))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@JsonString", json);
+                cmd.Parameters.AddWithValue("@json", json);
 
                 await conn.OpenAsync();
                 using (var transaction = conn.BeginTransaction())
@@ -108,7 +108,7 @@ namespace BackendExam.DbContexts
             using (var cmd = new SqlCommand("sp_MyOffice_ACPD_Delete", conn))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@JsonString", json);
+                cmd.Parameters.AddWithValue("@json", json);
 
                 await conn.OpenAsync();
                 using (var transaction = conn.BeginTransaction())

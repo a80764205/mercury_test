@@ -13,9 +13,14 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 builder.Services.AddScoped<MyOffice_ACPDService>();
 
 //Register DbContext
-builder.Services.AddDbContext<MyOffice_ACPDDbContext>(options =>
-    options.UseSqlServer(connectionString)
-);
+//builder.Services.AddDbContext<MyOffice_ACPDDbContext>(options =>
+//    options.UseSqlServer(connectionString)
+//);
+builder.Services.AddSingleton<MyOffice_ACPDDbContext>(dbsp =>
+{
+    return new MyOffice_ACPDDbContext(connectionString);
+});
+
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
