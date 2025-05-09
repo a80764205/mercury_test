@@ -21,5 +21,9 @@ namespace BackendExam.Services
         {
             await _dbContext.InsertAsync(json);
         }
+        public async Task UpdateData(string json)
+        {
+            await _dbContext.UpdateAsync(json);
+        }
     }
 }
