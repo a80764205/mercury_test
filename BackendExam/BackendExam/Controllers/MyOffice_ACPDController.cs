@@ -23,5 +23,14 @@ namespace BackendExam.Controllers
             var data = await _service.GetAllData(json);
             return Ok(data);
         }
+
+
+        [HttpPost("create")]
+        public async Task<IActionResult> InsertData([FromBody] List<MyOffice_ACPDInsertModel> model)
+        {
+            var json = JsonSerializer.Serialize(model);
+            await _service.InsertData(json);
+            return Ok("Insert Success");
+        }
     }
 }

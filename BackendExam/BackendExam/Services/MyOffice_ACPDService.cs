@@ -16,5 +16,10 @@ namespace BackendExam.Services
             var data = await _dbContext.GetAsync(json);
             return data;
         }
+
+        public async Task InsertData(string json)
+        {
+            await _dbContext.InsertAsync(json);
+        }
     }
 }
