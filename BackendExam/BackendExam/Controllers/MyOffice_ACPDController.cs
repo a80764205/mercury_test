@@ -41,5 +41,12 @@ namespace BackendExam.Controllers
             await _service.UpdateData(json);
             return Ok("Update Success");
         }
+        [HttpPost("delete")]
+        public async Task<IActionResult> DeleteData([FromBody] List<MyOffice_ACPDModel> model)
+        {
+            var json = JsonSerializer.Serialize(model);
+            await _service.DeleteData(json);
+            return Ok("Delete Success");
+        }
     }
 }
